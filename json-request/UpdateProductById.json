@@ -1,0 +1,10 @@
+{
+  "name":"Apple Macbook",
+  "price":80000,
+  "description":"this is a sample product",
+  "category":"Laptop",
+  "images":{
+    "public_id":"sample image",
+    "url":"sampleUrl"
+  }
+}

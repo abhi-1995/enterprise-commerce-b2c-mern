@@ -1,0 +1,10 @@
+{
+  "name":"Subscription",
+  "price":5000,
+  "description":"this is a special subscription service",
+  "category":"Service",
+  "images":{
+    "public_id":"sample image",
+    "url":"sampleUrl"
+  }
+}
