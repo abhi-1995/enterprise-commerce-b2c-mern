@@ -21,6 +21,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
+   // return next(new ErrorHandler("This is my temp error", 500));
     console.log("Inside getAllProducts() ...")
 
     const resultPerPage = 8;
