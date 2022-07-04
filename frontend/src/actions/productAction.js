@@ -12,6 +12,7 @@ import {
 
 
 export const getProduct = () => async (dispatch) => {
+  console.log("Inside getProduct() ..... Action");
     try {
 
         dispatch({
@@ -26,6 +27,7 @@ export const getProduct = () => async (dispatch) => {
         })
 
     } catch (error) {
+      console.log(`Error details ${error}`);
         dispatch({
             type: ALL_PRODUCT_FAIL,
             payload: error.response.data.message
@@ -33,29 +35,27 @@ export const getProduct = () => async (dispatch) => {
     }
 }
 
+// Get Products Details
 export const getProductDetails = (id) => async (dispatch) => {
-    try {
+  try {
+    dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-        dispatch({
-            type: PRODUCT_DETAILS_REQUEST
-        });
+    const { data } = await axios.get(`/api/v1/product/${id}`);
 
-        const { data } = await axios.get(`/api/v1/product/${id}`);
-
-        dispatch({
-            type: PRODUCT_DETAILS_SUCCESS,
-            payload: data.product
-        })
-
-    } catch (error) {
-        dispatch({
-            type: PRODUCT_DETAILS_FAIL,
-            payload: error.response.data.message
-        })
-    }
-}
+    dispatch({
+      type: PRODUCT_DETAILS_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 
 export const clearErrors = () => async (dispatch) => {
+  console.log("Inside clearErrors() ..... Action");
     dispatch({ type: CLEAR_ERRORS });
 }

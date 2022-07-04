@@ -14,6 +14,7 @@ const Home = () => {
     const { loading, error, products, productsCount } = useSelector(state => state.products);
 
     useEffect(() => {
+        console.log(`Error in Home.JS >> ${error}`);
         if (error) {
             return alert.error(error);
         }
@@ -21,7 +22,7 @@ const Home = () => {
     }, [dispatch, error, alert]);
     return (
         <Fragment>
-            {loading ? <Loader/> : (
+            {loading ? <Loader /> : (
                 <Fragment>
                     <MetaData title="ECOMMERCE" />
                     <div className='banner'>
@@ -34,7 +35,6 @@ const Home = () => {
                         </a>
                     </div>
                     <h2 className='homeHeading'>Featured Products</h2>
-
                     <div className="container" id="container">
                         {products &&
                             products.map((product) => (
